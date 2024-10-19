@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prediksi Cyberbullying</title>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+section#home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Jarak antara gambar dan form */
+}
+
+.container img {
+    max-width: 600px; /* Batasan lebar gambar */
+    height: auto;
+    border-radius: 10px;
+}
+
+.prediksi {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.prediksi h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.prediksi form {
+    display: flex;
+    flex-direction: column;
+}
+
+.prediksi textarea {
+    width: 300px;
+    height: 150px;
+    margin-bottom: 15px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    resize: none;
+}
+
+.prediksi button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.prediksi button:hover {
+    background-color: #45a049;
+}
+    </style> 
+</head>
+<body>
+    <section id="home">
+        <div class="container">
+            <img src="https://img.freepik.com/free-vector/sad-girl-surrounded-by-pointing-fingers_1308-119404.jpg?semt=ais_hybrid-rr-similar" alt="Cyberbullying Image"/>
+            <div class="prediksi">
+                <h1 class="deskripsi">Prediksi Cyberbullying</h1>
+                <form action="/predict" method="POST">
+                    <textarea name="comment" placeholder="Masukkan komentar di sini" required></textarea>
+                    <button type="submit">Prediksi</button>
+                </form>
+                <hr>
+                {% if prediction %}
+        <h2>Hasil Prediksi: {{ prediction }}</h2>
+    {% endif %}
+            </div>
+        </div>
+    </section>
+    
+</body>
+</html>
