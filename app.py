@@ -1,7 +1,5 @@
 import pickle
-from flask import Flask, render_template, request
-
-app = Flask(__name__)
+import streamlit as st
 
 # Load model dan vectorizer
 with open('model.pkl', 'rb') as model_file:
@@ -23,17 +21,13 @@ class Model:
 # Inisialisasi instance model
 model_instance = Model()
 
-@app.route('/')
-def index():
-    return render_template('app.html')
+# Membuat antarmuka pengguna dengan Streamlit
+st.title("Deteksi Bullying")
+input_text = st.text_area("Masukkan komentar Anda:")
 
-@app.route('/predict', methods=['POST'])
-def predict():
-    if request.method == 'POST':
-        input_text = request.form['comment']
+if st.button("Prediksi"):
+    if input_text:
         prediction = model_instance.predict(input_text)
-        return render_template('app.html', prediction=prediction)
-    return render_template('app.html')
-
-if __name__ == '__main__':
-    app.run(debug=True)
+        st.write(f"Hasil Prediksi: {prediction}")
+    else:
+        st.write("Silakan masukkan komentar untuk prediksi.")
